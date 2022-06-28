@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h2>IBO products Assignment</h2>
+</body>
+</html>
+<script>
+
+const listOfProducts = [{
+     productName: "TV",
+     quantity: 10,
+     description: "television"
+   },
+   {
+     productName: "AC",
+     quantity: 5,
+     description: "air conditioner"
+   },
+   {
+     productName: "TV",
+     quantity: 10,
+     description: "television"
+   },
+   {
+     productName: "AC",
+     quantity: 5,
+     description: "air conditioner"
+   },
+   {
+     productName: "FAN",
+     quantity: 10,
+     description: "Ceiling Fan"
+   }
+ ];
+
+ //  PROBLEM STATEMENT - 1:
+
+    const getUniqueProductCount = (listOfProducts) =>{
+        let obj = {};
+        for(let product of listOfProducts)
+        {
+            let name = product.productName
+
+            if(obj[name])
+            {
+                obj[name]+=1
+            }
+            else
+            {
+                obj[name] = 1;
+            }
+        }
+
+        return obj
+    }
+
+    const getUniquePrducts = (listOfProducts) =>{
+        let obj = {}
+        for(let product of listOfProducts)
+        {
+            let {productName,quantity,description} = product
+            
+            if(obj[productName])
+            {
+                obj[productName]+=quantity
+            }
+            else{
+                obj[productName] = quantity 
+            }
+        }
+        
+        const array = [];
+        for(let product of listOfProducts)
+        {
+            const {productName,quantity,description} = product
+
+            if(obj[productName])
+            {
+                let bag = {
+                    productName,
+                    quantity:obj[productName],
+                    description
+                };
+
+                array.push(bag)
+
+                delete obj[productName]
+            }
+        }
+
+        return array
+    }
+
+</script>
+
+
+ <!-- You have been given a list of products which is having property 
+     productName, quantity and description.
+
+ PROBLEM STATEMENTS:
+
+ 1. you need to write a function say, getUniqueProductCount which 
+ should return count of each Product(as an object) present in the given 
+ list of Products considering Product Name as Key.
+
+ Sample Output for the given listOfProducts will be :
+
+ {
+   "TV": 2,
+   "AC": 2,
+   "FAN": 1
+ }
+
+
+
+ 2. you need to write a function say, getUniquePrducts which should return an array of objects by grouping 
+ the products based on the productName and summing up the quantity for the same products present in the given list of Products considering Product Name as Key.
+
+ Sample Output for the given listOfProducts will be :
+
+ [{
+     productName: "TV",
+     quantity: 20,
+     description: "television"
+   },
+   {
+     productName: "AC",
+     quantity: 10,
+     description: "air conditioner"
+   },
+   {
+     productName: "FAN",
+     quantity: 10,
+      description: "Ceiling Fan"
+   }
+ ]  -->
